@@ -1,7 +1,4 @@
 /node_modules
-/storage/app/public/*.key
-/storage/app/framework/*.key
-/storage/app/logs/*.key
 /vendor
 /.idea
 /.vagrant
