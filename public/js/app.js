@@ -43186,7 +43186,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "col-md-6" }, [
       _c("form", { attrs: { action: "/save_form" } }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "email" } }, [_vm._v("Product name: *")]),
@@ -43284,7 +43284,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "col-md-6" }, [
       _c("div", { attrs: { clas: "table-responsive" } }, [
         _c("table", { staticClass: "table table-striped" }, [
           _vm._m(0),

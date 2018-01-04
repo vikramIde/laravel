@@ -63,7 +63,7 @@
           <h1>Dashboard</h1>
 
           <h2>Product Details</h2>
-          <div class="col-sm-6" id="app">
+          <div class="row" id="app">
               <product-component></product-component>
           </div>
         </main>

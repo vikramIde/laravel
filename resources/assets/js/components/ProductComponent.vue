@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container">
+        <div class="col-md-6">
             <form action="/save_form">
                     <div class="form-group">
                       <label for="email">Product name: *</label>
@@ -18,7 +18,7 @@
                     <button type="button" class="btn btn-default" @click="storeProduct()">Submit</button>
               </form>
         </div>
-        <div class="container">
+        <div class="col-md-6">
             <div clas="table-responsive">
                  <table class="table table-striped">
                   <thead>
