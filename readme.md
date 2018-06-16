@@ -11,7 +11,14 @@ To use this app , just clone the repo and run following command.
 
 - **Home**
 - **Form**
+- **User-Details**
 
+## Technology
+    - **Laravel 5.5.4**
+    - **Vue 2.0 **
+
+## Note
+    .If you login as Admin and click on Form it will throw 404 and if you login as Customer and click on user-Details it will throw 404
 
 ## License
 
