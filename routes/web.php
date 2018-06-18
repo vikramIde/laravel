@@ -27,6 +27,10 @@ Route::get('/form', function () {
     return view('form');
 })->middleware('auth','customer');
 
+Route::get('/queryform', function () {
+    return view('queryform');
+})->middleware('auth','admin');
+
 Route::get('/user-list', function () {
     return view('user-details');
 })->middleware('auth','admin');

@@ -1,52 +1,46 @@
 <template>
     <div>
         <div class="col-md-12">
-            <form action="/save_form">
-
-                    <div class="form-group">
-                      <label for="email">Name: *</label>
-                      <input type="text" class="form-control" id="product_name" v-model="form_data.name" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">Addresse </label>
-                      <textarea  class="form-control" id="quantity" v-model="form_data.Addresse" required>
-                      </textarea> 
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">Country </label>
-                      <select class="form-control" v-model="country_index"  @change="selected()">
-                        <option value="">Select</option>
-                        <option v-for="(country,index) in countryList" :value="index">
-                          {{country.name}}
-                        </option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">State </label>
-                      <select class="form-control" v-model="form_data.state"  >
-                        <option value="">Select</option>
-                        <option v-for="(state,index) in selectedState" >
-                          {{state}}
-                        </option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">Phone *</label>
-                      <input type="text" name="" v-model='form_data.dial_code'>
-                      <input type="text" class="form-control" id="quantity" v-model="form_data.phone" required>
-                    </div>
-                    
-                    <button type="button" class="btn btn-default" @click="storeProduct()">Submit</button>
-              </form>
+            <div clas="table-responsive"><notifications group="foo" />
+                 <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>User name</th>
+                      <th>Addresse </th>
+                      <th>Country</th>
+                      <th>State</th>
+                      <th>Phone</th>
+                      <th>Datetime submitted</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(product,index) in product_list">
+                      <td>{{product.name}}</td>
+                      <td>{{product.Addresse}}</td>
+                      <td>{{product.country}}</td>
+                      <td>{{product.state}}</td>
+                      <td>{{product.dial_code}}-{{product.phone}}</td>
+                      <td>{{product.date}}</td>
+                      <td>
+                        <button class="btn btn-success" v-if="product.status">
+                          Click to disable
+                        </button>
+                        <button class="btn btn-danger" v-else>
+                          Click to Enable
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+               </table>
+            </div>
         </div>
-        
     </div>
 </template>
 
 
 
 <script>
-import Notifications from 'vue-notification'
 import countrylist from '../core/countrylist.js'
 import statelist from '../core/statelist.js'
 
@@ -122,9 +116,10 @@ import statelist from '../core/statelist.js'
                     dial_code:'',
                     state:'',
                     phone:'',
-                    status:false,
+                 
+                      status:false,
                 }
-                        this.getProducts()
+                 alert('Thanks for submiting the query')
                     })
                 }
                 else{

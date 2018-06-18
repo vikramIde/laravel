@@ -54,6 +54,9 @@
               <a class="nav-link" href="form">Form</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="queryform">QueryForm</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="user-list">User-Details</a>
             </li>
           </ul>
