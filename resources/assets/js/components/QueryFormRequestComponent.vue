@@ -23,18 +23,63 @@
                       <td>{{product.dial_code}}-{{product.phone}}</td>
                       <td>{{product.date}}</td>
                       <td>
-                        <button class="btn btn-success" v-if="product.status">
-                          Click to disable
-                        </button>
-                        <button class="btn btn-danger" v-else>
-                          Click to Enable
-                        </button>
+                         <a class="btn btn-info" @click="editMe(product.id,index)">
+                          Edit
+                        </a>
+                        <a class="btn btn-danger" @click="deleteMe(product.id,index)">
+                          Delete
+                        </a>
                       </td>
                     </tr>
                   </tbody>
                </table>
             </div>
         </div>
+        <transition name="modal" v-if="openPopup" class="modal fade">
+            <div class="modal-mask">
+              <div class="modal-wrapper">
+                <div class="modal-container">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Query Form</h4>
+                      </div>
+                      <div class="modal-body">
+                          <form action="/save_form">
+
+                    <div class="form-group">
+                      <label for="email">Name: *</label>
+                      <input type="text" class="form-control" id="product_name" v-model="form_data.name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Addresse </label>
+                      <textarea  class="form-control" id="quantity" v-model="form_data.Addresse" required>
+                      </textarea> 
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Country </label>
+                      <input type="text" name="" v-model="form_data.country">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">State </label>
+                      <input type="text" name="" v-model="form_data.state">
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Phone *</label>
+                      <input type="text" name="" v-model='form_data.dial_code'>
+                      <input type="text" class="form-control" id="quantity" v-model="form_data.phone" required>
+                    </div>
+              </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" @click="updateMe()">Submit</button>
+                        <button type="button" class="btn btn-info" @click="closeme()">Close</button>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </transition>
     </div>
 </template>
 
@@ -51,6 +96,7 @@ import statelist from '../core/statelist.js'
         },
         data(){
             return {
+                openPopup:false,
                 product_list:[],
                 country_index:'',
                 countryList:countrylist,
@@ -134,7 +180,29 @@ import statelist from '../core/statelist.js'
                         console.log(e.data)
                         this.product_list = e.data
                     })
-            }
+            },
+             editMe(id,index){
+                this.form_data = this.product_list[index]
+                this.openPopup=true
+            },
+            closeme(){
+              this.openPopup=false;
+            },
+            updateMe(){
+                alert('Are you sure you wanna update the user')
+                axios.post('/api/update_users/',this.user_list)
+                    .then(e => { 
+                        console.log(e.data)
+                        this.user_list = e.data
+                    })
+            },
+            deleteMe(id,index){
+                alert('Are you sure you wanna delete the user')
+                axios.get('/api/delete_users/'+id)
+                    .then(e => { 
+                        this.getProducts()
+                    })
+            },
 
         }
     }

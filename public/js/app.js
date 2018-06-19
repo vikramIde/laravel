@@ -46534,6 +46534,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -46545,6 +46592,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            openPopup: false,
             product_list: [],
             country_index: '',
             countryList: __WEBPACK_IMPORTED_MODULE_0__core_countrylist_js__["a" /* default */],
@@ -46624,6 +46672,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(e.data);
                 _this3.product_list = e.data;
             });
+        },
+        editMe: function editMe(id, index) {
+            this.form_data = this.product_list[index];
+            this.openPopup = true;
+        },
+        closeme: function closeme() {
+            this.openPopup = false;
+        },
+        updateMe: function updateMe() {
+            var _this4 = this;
+
+            alert('Are you sure you wanna update the user');
+            axios.post('/api/update_users/', this.user_list).then(function (e) {
+                console.log(e.data);
+                _this4.user_list = e.data;
+            });
+        },
+        deleteMe: function deleteMe(id, index) {
+            var _this5 = this;
+
+            alert('Are you sure you wanna delete the user');
+            axios.get('/api/delete_users/' + id).then(function (e) {
+                _this5.getProducts();
+            });
         }
     }
 });
@@ -46636,59 +46708,346 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c(
-        "div",
-        { attrs: { clas: "table-responsive" } },
-        [
-          _c("notifications", { attrs: { group: "foo" } }),
-          _vm._v(" "),
-          _c("table", { staticClass: "table table-striped" }, [
-            _vm._m(0),
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "div",
+          { attrs: { clas: "table-responsive" } },
+          [
+            _c("notifications", { attrs: { group: "foo" } }),
             _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.product_list, function(product, index) {
-                return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(product.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.Addresse))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.country))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.state))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(product.dial_code) + "-" + _vm._s(product.phone)
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.date))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    product.status
-                      ? _c("button", { staticClass: "btn btn-success" }, [
+            _c("table", { staticClass: "table table-striped" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.product_list, function(product, index) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(product.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.Addresse))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.country))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.state))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(product.dial_code) + "-" + _vm._s(product.phone)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.date))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-info",
+                          on: {
+                            click: function($event) {
+                              _vm.editMe(product.id, index)
+                            }
+                          }
+                        },
+                        [
                           _vm._v(
-                            "\n                      Click to disable\n                    "
+                            "\n                      Edit\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              _vm.deleteMe(product.id, index)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                      Delete\n                    "
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                })
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm.openPopup
+        ? _c(
+            "transition",
+            { staticClass: "modal fade", attrs: { name: "modal" } },
+            [
+              _c("div", { staticClass: "modal-mask" }, [
+                _c("div", { staticClass: "modal-wrapper" }, [
+                  _c("div", { staticClass: "modal-container" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c("h4", { staticClass: "modal-title" }, [
+                          _vm._v("Query Form")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c("form", { attrs: { action: "/save_form" } }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "email" } }, [
+                              _vm._v("Name: *")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.name,
+                                  expression: "form_data.name"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                id: "product_name",
+                                required: ""
+                              },
+                              domProps: { value: _vm.form_data.name },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "pwd" } }, [
+                              _vm._v("Addresse ")
+                            ]),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.Addresse,
+                                  expression: "form_data.Addresse"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { id: "quantity", required: "" },
+                              domProps: { value: _vm.form_data.Addresse },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "Addresse",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "pwd" } }, [
+                              _vm._v("Country ")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.country,
+                                  expression: "form_data.country"
+                                }
+                              ],
+                              attrs: { type: "text", name: "" },
+                              domProps: { value: _vm.form_data.country },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "country",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "pwd" } }, [
+                              _vm._v("State ")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.state,
+                                  expression: "form_data.state"
+                                }
+                              ],
+                              attrs: { type: "text", name: "" },
+                              domProps: { value: _vm.form_data.state },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "state",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "pwd" } }, [
+                              _vm._v("Phone *")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.dial_code,
+                                  expression: "form_data.dial_code"
+                                }
+                              ],
+                              attrs: { type: "text", name: "" },
+                              domProps: { value: _vm.form_data.dial_code },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "dial_code",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form_data.phone,
+                                  expression: "form_data.phone"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                id: "quantity",
+                                required: ""
+                              },
+                              domProps: { value: _vm.form_data.phone },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form_data,
+                                    "phone",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-default",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.storeProduct()
+                                }
+                              }
+                            },
+                            [_vm._v("Submit")]
                           )
                         ])
-                      : _c("button", { staticClass: "btn btn-danger" }, [
-                          _vm._v(
-                            "\n                      Click to Enable\n                    "
-                          )
-                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.updateMe()
+                              }
+                            }
+                          },
+                          [_vm._v("Submit")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.closeme()
+                              }
+                            }
+                          },
+                          [_vm._v("Close")]
+                        )
+                      ])
+                    ])
                   ])
                 ])
-              })
-            )
-          ])
-        ],
-        1
-      )
-    ])
-  ])
+              ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
