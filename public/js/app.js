@@ -46579,8 +46579,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -46991,21 +46989,7 @@ var render = function() {
                                 }
                               }
                             })
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-default",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.storeProduct()
-                                }
-                              }
-                            },
-                            [_vm._v("Submit")]
-                          )
+                          ])
                         ])
                       ]),
                       _vm._v(" "),
