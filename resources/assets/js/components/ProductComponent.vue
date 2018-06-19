@@ -46,7 +46,7 @@
 
 
 <script>
-import Notifications from 'vue-notification'
+
 import countrylist from '../core/countrylist.js'
 import statelist from '../core/statelist.js'
 

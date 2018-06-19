@@ -33,5 +33,19 @@ class UserController extends Controller
         return json_encode($userList);
     }
 
+    public function update_users($id){
+        $user_model = new User;
+        $userList = $user_model::all();
+        
+        return json_encode($userList);
+    }
+
+    public function delete_users($id){
+        $user_model = new User;
+        $userList = $user_model::where('id', $id)->delete();
+        
+        return json_encode($userList);
+    }
+
 
 }

@@ -107,18 +107,18 @@ import statelist from '../core/statelist.js'
                     axios.post('/api/store_product/',{form_data})
                     .then(e => { 
                         this.form_data ={
-                    name:'',
-                    // quantity:'',
-                    // price:'',
-                    date:'',
-                    Addresse:'',
-                    country:'',
-                    dial_code:'',
-                    state:'',
-                    phone:'',
-                 
-                      status:false,
-                }
+                          name:'',
+                          // quantity:'',
+                          // price:'',
+                          date:'',
+                          Addresse:'',
+                          country:'',
+                          dial_code:'',
+                          state:'',
+                          phone:'',
+                       
+                            status:false,
+                      }
                  alert('Thanks for submiting the query')
                     })
                 }
